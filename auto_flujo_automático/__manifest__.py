@@ -1,34 +1,17 @@
-# -*- coding: utf-8 -*-
 {
-    'name': "auto_flujo_automático",
+    'name': 'Flujo Automático en Ventas',
+    'version': '17.0.1.0.0',
+    'summary': 'Modifica el botón Confirmar en órdenes de venta para ejecutar trabajos automáticos (ir.cron).',
+    'category': 'Ventas',
+    'author': 'PrimateUY',
+    'website': 'https://primate.uy',
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
-
-    'description': """
-Long description of module's purpose
-    """,
-
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
-    'depends': ['base'],
-
-    # always loaded
+    'depends': ['sale', 'base'],
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'security/ir.model.access.csv',
+        'views/orden_venta_vista.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+    'installable': True,
+    'application': False,
+    'license': 'LGPL-3',
 }
-
