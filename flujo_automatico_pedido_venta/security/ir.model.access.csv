@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_flujo_automatico_pedido_venta_flujo_automatico_pedido_venta,flujo_automatico_pedido_venta.flujo_automatico_pedido_venta,model_flujo_automatico_pedido_venta_flujo_automatico_pedido_venta,base.group_user,1,1,1,1
+access_sale_order_type,access.sale.order.type,model_sale_order_type,base.group_user,1,1,1,1
