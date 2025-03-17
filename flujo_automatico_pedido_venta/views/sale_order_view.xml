@@ -1,0 +1,17 @@
+<odoo>
+    <record id="view_sale_order_form_inherit_download_invoice" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.download.invoice</field>
+        <field name="model">sale.order</field>
+        <!-- Asegúrate de que este external id sea el correcto para la vista de cotización en Odoo 17 -->
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Se ancla después del botón "Enviar por correo electrónico" -->
+            <xpath expr="//button[@name='action_quotation_send']" position="after">
+                <button name="action_download_invoice_pdf"
+                        type="object"
+                        class="btn btn-secondary"
+                        string="Descargar PDF de factura"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
