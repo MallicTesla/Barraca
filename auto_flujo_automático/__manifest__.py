@@ -6,7 +6,12 @@
     'author': 'PrimateUY',
     'website': 'https://primate.uy',
 
-    'depends': ['sale', 'base'],
+    'depends': ['sale',
+                'base',
+                'sale_automatic_workflow',
+                'sale_automatic_workflow_stock',
+                ],
+
     'data': [
         'security/ir.model.access.csv',
         'views/orden_venta_vista.xml',

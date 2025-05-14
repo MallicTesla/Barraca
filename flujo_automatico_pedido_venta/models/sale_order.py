@@ -5,8 +5,19 @@ class SaleOrder(models.Model):
 
     @api.onchange('type_id')
     def _onchange_type_id_set_workflow(self):
-        if self.type_id and self.type_id.flujo_automatico_ids:
-            # Si hay varios flujos, se toma el primero (puedes ajustar la lógica si es necesario)
-            self.workflow_process_id = self.type_id.flujo_automatico_ids[0].id
-        else:
-            self.workflow_process_id = False
+        """Al cambiar el tipo, asigna el primer flujo automático disponible."""
+        for order in self:
+            if order.type_id and order.type_id.flujo_automatico_ids:
+                order.workflow_process_id = order.type_id.flujo_automatico_ids[0].id
+            else:
+                order.workflow_process_id = False
+
+    def copy(self, default=None):
+        """Al duplicar la cotización, conserva (o vuelve a calcular) el flujo automático."""
+        default = dict(default or {})
+        # Si al duplicar no vienen explícitamente workflow_process_id
+        for order in self:
+            if not default.get('workflow_process_id') and order.type_id and order.type_id.flujo_automatico_ids:
+                default['workflow_process_id'] = order.type_id.flujo_automatico_ids[0].id
+        return super(SaleOrder, self).copy(default)
+
